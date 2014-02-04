@@ -13,6 +13,6 @@
 
 @property (nonatomic, strong) NSURL *imageURL;
 @property (nonatomic, strong) NSString *description;
-@property (nonatomic, assign) BTLocation *location;
+@property (nonatomic, strong) BTLocation *location;
 @property (nonatomic, strong) NSDate *date;
 @end

@@ -9,6 +9,8 @@
 #import "BTFeedViewController.h"
 #import "BTCapturedMoment.h"
 #import "BTFeedViewCell.h"
+#import "BTMomentManager.h"
+#import <ReactiveCocoa/RACEXTScope.h>
 
 @interface BTFeedViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -34,19 +36,28 @@ static NSString* cellIdentifier = @"FeedViewCell";
     [self.tableView registerNib:[UINib nibWithNibName:@"BTFeedViewCell" bundle:nil] forCellReuseIdentifier: cellIdentifier];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    NSDictionary *dictionary = @{
-                                 @"location": @{
-                                         @"lat": @"37.7577",
-                                         @"lon": @"-122.4376,12",
-                                         @"name": @"Delfina"
-                                         },
-                                 @"image_url": @"http://distilleryimage1.ak.instagram.com/da85292c88a011e39bd0129dfc2dce15_8.jpg",
-                                 @"description": @"This is one amazing pizza",
-                                 @"date": @"2014-01-28 22:18:36 -0800"
-                                 };
-    NSError *error;
-    BTCapturedMoment *moment = [MTLJSONAdapter modelOfClass:BTCapturedMoment.class fromJSONDictionary:dictionary error:&error];
-    self.moments = @[moment];
+    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Nav Bar"]];
+    @weakify(self);
+    self.moments = @[];
+    [RACObserve(self, moments) subscribeNext:^(NSArray *moments) {
+        @strongify(self);
+        [self.tableView reloadData];
+    }];
+    RACSignal *fetchMoments = [[[BTMomentManager sharedManager] fetchAll]
+                               deliverOn: [RACScheduler mainThreadScheduler]];
+    
+    [fetchMoments subscribeNext:^(NSArray* moments) {
+        @strongify(self);
+        NSLog(@"Subscribe Next %lu moments: %@", (unsigned long)self.moments.count, self.moments);
+        self.moments = moments;
+    } error:^(NSError *error) {
+        NSLog(@"Error fetching: %@", error);
+    } completed:^{
+        @strongify(self);
+        NSLog(@"Subscribe completion %lu moments: %@", (unsigned long)self.moments.count, self.moments);
+        [self.tableView reloadData];
+    }];
+    
 	// Do any additional setup after loading the view.
 }
 

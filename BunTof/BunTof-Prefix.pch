@@ -17,4 +17,6 @@
     #import <AFNetworking/UIImageView+AFNetworking.h>
     #import <Mantle/Mantle.h>
     #import <CoreLocation/CLLocation.h>
+    #import <ReactiveCocoa/ReactiveCocoa.h>
+    #import <AFNetworking-RACExtensions/RACAFNetworking.h>
 #endif

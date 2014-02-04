@@ -14,6 +14,7 @@
 		4F57454D1898CB4900E35EFE /* BTFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F57454C1898CB4900E35EFE /* BTFeedViewController.m */; };
 		4F5745501898CEA700E35EFE /* BTFeedViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F57454F1898CEA700E35EFE /* BTFeedViewCell.xib */; };
 		4F5745531898CEE200E35EFE /* BTFeedViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5745521898CEE200E35EFE /* BTFeedViewCell.m */; };
+		4F5E8EDD189F71BE00C9B76D /* BTMomentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5E8EDC189F71BE00C9B76D /* BTMomentManager.m */; };
 		4F964DAF18980CB800052520 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F964DAE18980CB800052520 /* Foundation.framework */; };
 		4F964DB118980CB800052520 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F964DB018980CB800052520 /* CoreGraphics.framework */; };
 		4F964DB318980CB800052520 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F964DB218980CB800052520 /* UIKit.framework */; };
@@ -52,6 +53,8 @@
 		4F57454F1898CEA700E35EFE /* BTFeedViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BTFeedViewCell.xib; path = Views/BTFeedViewCell.xib; sourceTree = "<group>"; };
 		4F5745511898CEE200E35EFE /* BTFeedViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BTFeedViewCell.h; path = Views/BTFeedViewCell.h; sourceTree = "<group>"; };
 		4F5745521898CEE200E35EFE /* BTFeedViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BTFeedViewCell.m; path = Views/BTFeedViewCell.m; sourceTree = "<group>"; };
+		4F5E8EDB189F71BE00C9B76D /* BTMomentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BTMomentManager.h; path = Managers/BTMomentManager.h; sourceTree = "<group>"; };
+		4F5E8EDC189F71BE00C9B76D /* BTMomentManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BTMomentManager.m; path = Managers/BTMomentManager.m; sourceTree = "<group>"; };
 		4F964DAB18980CB800052520 /* BunTof.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BunTof.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F964DAE18980CB800052520 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4F964DB018980CB800052520 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -127,6 +130,15 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		4F5E8EDA189F719F00C9B76D /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				4F5E8EDB189F71BE00C9B76D /* BTMomentManager.h */,
+				4F5E8EDC189F71BE00C9B76D /* BTMomentManager.m */,
+			);
+			name = Managers;
+			sourceTree = "<group>";
+		};
 		4F964DA218980CB700052520 = {
 			isa = PBXGroup;
 			children = (
@@ -163,14 +175,15 @@
 		4F964DB418980CB800052520 /* BunTof */ = {
 			isa = PBXGroup;
 			children = (
+				4F5E8EDA189F719F00C9B76D /* Managers */,
 				4F57454E1898CE7B00E35EFE /* Views */,
 				4F57454A1898CB2E00E35EFE /* Controllers */,
 				4F57453F1898C0FE00E35EFE /* Models */,
+				4F5745481898CA5F00E35EFE /* BunTof.storyboard */,
 				4F964DBD18980CB800052520 /* BTAppDelegate.h */,
 				4F964DBE18980CB800052520 /* BTAppDelegate.m */,
 				4F964DC018980CB800052520 /* Images.xcassets */,
 				4F964DB518980CB800052520 /* Supporting Files */,
-				4F5745481898CA5F00E35EFE /* BunTof.storyboard */,
 			);
 			path = BunTof;
 			sourceTree = "<group>";
@@ -342,6 +355,7 @@
 				4F5745531898CEE200E35EFE /* BTFeedViewCell.m in Sources */,
 				4F57454D1898CB4900E35EFE /* BTFeedViewController.m in Sources */,
 				4F5745471898C50400E35EFE /* BTLocation.m in Sources */,
+				4F5E8EDD189F71BE00C9B76D /* BTMomentManager.m in Sources */,
 				4F5745421898C18100E35EFE /* BTCapturedMoment.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

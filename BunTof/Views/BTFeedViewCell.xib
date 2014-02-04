@@ -6,11 +6,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" shouldIndentWhileEditing="NO" rowHeight="437" id="RDY-RJ-MiZ" customClass="BTFeedViewCell">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="437"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="0.0" shouldIndentWhileEditing="NO" rowHeight="429" id="RDY-RJ-MiZ" customClass="BTFeedViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="429"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RDY-RJ-MiZ" id="5oU-0q-dXC">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="436"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="428"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ax9-hz-Gfy">
@@ -21,21 +21,22 @@
                             <constraint firstAttribute="width" constant="320" id="PF8-29-SjA"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="January 1, 2013" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sYs-O2-gP0">
-                        <rect key="frame" x="20" y="330" width="123" height="21"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" ambiguous="YES" misplaced="YES" text="January 1, 2013" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sYs-O2-gP0">
+                        <rect key="frame" x="10" y="330" width="123" height="43"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tiN-YR-f2u">
-                        <rect key="frame" x="233" y="330" width="67" height="21"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Location" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tiN-YR-f2u">
+                        <rect key="frame" x="243" y="341" width="67" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="UH1-mr-xtg">
-                        <rect key="frame" x="20" y="371" width="280" height="21"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" ambiguous="YES" misplaced="YES" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="UH1-mr-xtg">
+                        <rect key="frame" x="10" y="381" width="300" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="highlightedColor"/>
@@ -43,18 +44,19 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="UH1-mr-xtg" firstAttribute="trailing" secondItem="tiN-YR-f2u" secondAttribute="trailing" id="1FU-i8-NMa"/>
+                    <constraint firstItem="tiN-YR-f2u" firstAttribute="centerY" secondItem="sYs-O2-gP0" secondAttribute="centerY" id="68M-ZN-owa"/>
                     <constraint firstAttribute="trailing" secondItem="Ax9-hz-Gfy" secondAttribute="trailing" priority="999" id="6w7-am-ZUv"/>
-                    <constraint firstAttribute="trailing" secondItem="tiN-YR-f2u" secondAttribute="trailing" constant="20" id="KeW-st-ofu"/>
+                    <constraint firstAttribute="trailing" secondItem="tiN-YR-f2u" secondAttribute="trailing" constant="10" id="KeW-st-ofu"/>
                     <constraint firstItem="Ax9-hz-Gfy" firstAttribute="top" secondItem="5oU-0q-dXC" secondAttribute="top" id="OVb-c9-u1g"/>
-                    <constraint firstAttribute="bottom" secondItem="UH1-mr-xtg" secondAttribute="bottom" constant="44" id="Van-Op-mIm"/>
+                    <constraint firstAttribute="bottom" secondItem="UH1-mr-xtg" secondAttribute="bottom" constant="10" id="Van-Op-mIm"/>
                     <constraint firstItem="sYs-O2-gP0" firstAttribute="leading" secondItem="UH1-mr-xtg" secondAttribute="leading" id="Zfv-Mp-1Vi"/>
-                    <constraint firstItem="UH1-mr-xtg" firstAttribute="top" secondItem="sYs-O2-gP0" secondAttribute="bottom" constant="20" id="aVE-Zw-Zi7"/>
+                    <constraint firstItem="UH1-mr-xtg" firstAttribute="top" secondItem="sYs-O2-gP0" secondAttribute="bottom" constant="10" id="aVE-Zw-Zi7"/>
                     <constraint firstItem="Ax9-hz-Gfy" firstAttribute="leading" secondItem="5oU-0q-dXC" secondAttribute="leading" priority="999" id="cbc-8B-ucd"/>
-                    <constraint firstItem="sYs-O2-gP0" firstAttribute="baseline" secondItem="tiN-YR-f2u" secondAttribute="baseline" id="geP-73-Jui"/>
-                    <constraint firstItem="sYs-O2-gP0" firstAttribute="leading" secondItem="5oU-0q-dXC" secondAttribute="leading" constant="20" id="u92-8q-Wm8"/>
+                    <constraint firstItem="sYs-O2-gP0" firstAttribute="leading" secondItem="5oU-0q-dXC" secondAttribute="leading" constant="10" id="u92-8q-Wm8"/>
                     <constraint firstItem="sYs-O2-gP0" firstAttribute="top" secondItem="Ax9-hz-Gfy" secondAttribute="bottom" constant="10" id="woT-CE-fpE"/>
                 </constraints>
             </tableViewCellContentView>
+            <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
                 <outlet property="dateLabel" destination="sYs-O2-gP0" id="IQB-gf-DGk"/>
                 <outlet property="descriptionLabel" destination="UH1-mr-xtg" id="Kai-6c-vfo"/>
