@@ -220,9 +220,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4F964DAA18980CB800052520 /* BunTof */ = {
+		4F964DAA18980CB800052520 /* Bun & Tof */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4F964DD718980CB800052520 /* Build configuration list for PBXNativeTarget "BunTof" */;
+			buildConfigurationList = 4F964DD718980CB800052520 /* Build configuration list for PBXNativeTarget "Bun & Tof" */;
 			buildPhases = (
 				B88A83585A664B84AC01D16F /* Check Pods Manifest.lock */,
 				4F964DA718980CB800052520 /* Sources */,
@@ -234,7 +234,7 @@
 			);
 			dependencies = (
 			);
-			name = BunTof;
+			name = "Bun & Tof";
 			productName = BunTof;
 			productReference = 4F964DAB18980CB800052520 /* BunTof.app */;
 			productType = "com.apple.product-type.application";
@@ -284,7 +284,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4F964DAA18980CB800052520 /* BunTof */,
+				4F964DAA18980CB800052520 /* Bun & Tof */,
 				4F964DC518980CB800052520 /* BunTofTests */,
 			);
 		};
@@ -373,7 +373,7 @@
 /* Begin PBXTargetDependency section */
 		4F964DCC18980CB800052520 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 4F964DAA18980CB800052520 /* BunTof */;
+			target = 4F964DAA18980CB800052520 /* Bun & Tof */;
 			targetProxy = 4F964DCB18980CB800052520 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -554,7 +554,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4F964DD718980CB800052520 /* Build configuration list for PBXNativeTarget "BunTof" */ = {
+		4F964DD718980CB800052520 /* Build configuration list for PBXNativeTarget "Bun & Tof" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4F964DD818980CB800052520 /* Debug */,
