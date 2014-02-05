@@ -37,6 +37,7 @@ static NSString* cellIdentifier = @"FeedViewCell";
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Nav Bar"]];
+    self.navigationController.navigationBar.translucent = NO;
     @weakify(self);
     self.moments = @[];
     [RACObserve(self, moments) subscribeNext:^(NSArray *moments) {
