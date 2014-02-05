@@ -10,6 +10,7 @@
 #import "BTCapturedMoment.h"
 
 @interface BTMomentManager ()
+@property (nonatomic, strong) AFHTTPRequestOperationManager* httpManager;
 
 @end
 
@@ -25,9 +26,19 @@
     return manager;
 }
 
+- (instancetype) init
+{
+    if (self = [super init])
+    {
+        NSURL *baseURL = [NSURL URLWithString:@"http://localhost:7000/"];
+        self.httpManager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:baseURL];
+    }
+    return self;
+}
+
 - (RACSignal*) fetchAll
 {
-    return [[[AFHTTPRequestOperationManager manager] rac_GET:@"http://localhost:7000/moments.json" parameters:nil] flattenMap:^id(RACTuple *tuple) {
+    return [[self.httpManager rac_GET:@"/moments.json" parameters:nil] flattenMap:^id(RACTuple *tuple) {
         NSArray *serializedMoments = tuple[1];
         NSLog(@"Fetch serialized moments complete: %@", serializedMoments);
         return [[serializedMoments.rac_sequence.signal flattenMap:^RACStream *(NSDictionary *serializedMoment) {
