@@ -10,8 +10,8 @@
 
 @interface BTLocation : MTLModel <MTLJSONSerializing>
 
-@property (nonatomic, assign) CGFloat lat;
-@property (nonatomic, assign) CGFloat lon;
+//@property (nonatomic, assign) CGFloat lat;
+//@property (nonatomic, assign) CGFloat lon;
 @property (nonatomic, strong) NSString *name;
 
 @end
