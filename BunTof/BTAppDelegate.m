@@ -7,6 +7,7 @@
 //
 
 #import "BTAppDelegate.h"
+#import <AFNetworkActivityLogger/AFNetworkActivityLogger.h>
 
 @implementation BTAppDelegate
 
@@ -17,6 +18,10 @@
 //    self.window.backgroundColor = [UIColor whiteColor];
 //    [self.window makeKeyAndVisible];
 //    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"Nav Bar"] forBarMetrics:UIBarMetricsDefault];
+#ifdef DEBUG
+    [[AFNetworkActivityLogger sharedLogger] startLogging];
+#endif
+    
     UIColor* color = [[UIColor alloc] initWithRed:248.0f/255.0f green:167.0f/255.0f blue:186.0f/255.0f alpha:1.0f];
     [UINavigationBar appearance].barTintColor = color;
     self.window.tintColor = color;
