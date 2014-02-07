@@ -7,6 +7,7 @@
 //
 
 #import "BTFeedViewCell.h"
+#import <STTweetLabel/STTweetLabel.h>
 
 @interface BTFeedViewCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *mainImageView;
@@ -22,9 +23,20 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        // Initialization code
+        [self initStyle];
     }
     return self;
+}
+
+- (void) awakeFromNib
+{
+    [self initStyle];
+}
+
+- (void) initStyle
+{
+    self.backgroundColor = [UIColor colorWithRed:243.0f/255 green:243.0f/255 blue:243.0f/255 alpha:1.0f];
+    self.descriptionLabel.textColor = [UIColor colorWithWhite:51.0f/255 alpha:1.0f];
 }
 
 - (void) setMoment:(BTCapturedMoment *)moment
@@ -40,7 +52,9 @@
     self.dateLabel.text = [dateFormatter stringFromDate: self.moment.date];
     self.locationLabel.text = self.moment.location.name;
     self.descriptionLabel.text = self.moment.description;
-    NSURLRequest *request = [NSMutableURLRequest requestWithURL: self.moment.imageURL];
+    NSURL *baseURL = [NSURL URLWithString:BASE_URL];
+    NSURL *imageURL = [NSURL URLWithString:self.moment.imageURL.relativePath relativeToURL:baseURL];
+    NSURLRequest *request = [NSMutableURLRequest requestWithURL: imageURL];
     typeof(self) __weak _self = self;
     [self.imageView setImageWithURLRequest:request placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
         _self.mainImageView.alpha = 0.0f;
@@ -48,14 +62,23 @@
         [UIView animateWithDuration:0.3f animations:^{
             _self.mainImageView.alpha = 1.0f;
         }];
-    } failure:nil];
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
+        NSLog(@"%@", error);
+    }];
+}
+
+-(void) layoutSubviews
+{
+    [super layoutSubviews];
+    /*This is to prevent the label height from calculating to 0.5 pixel, which
+     causes text to be cut off*/
+    CGRect rect = self.descriptionLabel.frame;
+    rect.size.height = ceil(self.descriptionLabel.frame.size.height);
+    self.descriptionLabel.frame = rect;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
-//    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
 }
 
 @end

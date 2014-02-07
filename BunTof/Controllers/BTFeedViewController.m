@@ -36,6 +36,7 @@ static NSString* cellIdentifier = @"FeedViewCell";
     [self.tableView registerNib:[UINib nibWithNibName:@"BTFeedViewCell" bundle:nil] forCellReuseIdentifier: cellIdentifier];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    self.tableView.backgroundColor = [UIColor colorWithRed:243.0f/255 green:243.0f/255 blue:243.0f/255 alpha:1.0f];
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Nav Bar"]];
     self.navigationController.navigationBar.translucent = NO;
     self.edgesForExtendedLayout = UIRectEdgeNone;
@@ -59,6 +60,8 @@ static NSString* cellIdentifier = @"FeedViewCell";
         NSLog(@"Subscribe completion %lu moments: %@", (unsigned long)self.moments.count, self.moments);
         [self.tableView reloadData];
     }];
+    
+    
     
 	// Do any additional setup after loading the view.
 }
@@ -103,6 +106,7 @@ static NSString* cellIdentifier = @"FeedViewCell";
     [cell.contentView setNeedsLayout];
     [cell.contentView layoutIfNeeded];
     CGFloat height = [cell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
+    NSLog(@"Row: %ld, Height: %ld", (long)indexPath.row, (long)height);
     return height;
 }
 
