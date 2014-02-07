@@ -30,7 +30,7 @@
 {
     if (self = [super init])
     {
-        NSURL *baseURL = [NSURL URLWithString:@"http://localhost:7000/"];
+        NSURL *baseURL = [NSURL URLWithString:BASE_URL];
         self.httpManager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:baseURL];
     }
     return self;
