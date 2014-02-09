@@ -40,23 +40,43 @@ static NSString* cellIdentifier = @"FeedViewCell";
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Nav Bar"]];
     self.navigationController.navigationBar.translucent = NO;
     self.edgesForExtendedLayout = UIRectEdgeNone;
-    @weakify(self);
     self.moments = @[];
+    
+    @weakify(self);
     [RACObserve(self, moments) subscribeNext:^(NSArray *moments) {
         @strongify(self);
         [self.tableView reloadData];
     }];
-    RACSignal *fetchMoments = [[[BTMomentManager sharedManager] fetchAll]
-                               deliverOn: [RACScheduler mainThreadScheduler]];
     
     UITapGestureRecognizer* gesture = [[UITapGestureRecognizer alloc] init];
     [self.navigationItem.titleView addGestureRecognizer: gesture];
     self.navigationItem.titleView.userInteractionEnabled = YES;
+    
+#ifdef DEBUG
+    UIBarButtonItem *reloadButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:nil action:nil];
+    reloadButton.tintColor = [UIColor colorWithRed:241.0f/255 green:100.0f/255 blue:73.0f/255 alpha:1.0f];
+    reloadButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+        @strongify(self);
+        return [self fetchMoments];
+    }];
+    self.navigationItem.rightBarButtonItem = reloadButton;
+#endif
+    
     [[gesture rac_gestureSignal] subscribeNext:^(UITapGestureRecognizer* sender) {
+        
         @strongify(self);
         [self.tableView setContentOffset:CGPointZero animated:YES];
     }];
     
+    [self fetchMoments];
+}
+
+- (RACSignal*) fetchMoments
+{
+    RACSignal *fetchMoments = [[[BTMomentManager sharedManager] fetchAll]
+                               deliverOn: [RACScheduler mainThreadScheduler]];
+    
+    @weakify(self);
     [fetchMoments subscribeNext:^(NSArray* moments) {
         @strongify(self);
         NSLog(@"Subscribe Next %lu moments: %@", (unsigned long)self.moments.count, self.moments);
@@ -66,12 +86,9 @@ static NSString* cellIdentifier = @"FeedViewCell";
     } completed:^{
         @strongify(self);
         NSLog(@"Subscribe completion %lu moments: %@", (unsigned long)self.moments.count, self.moments);
-        [self.tableView reloadData];
     }];
     
-    
-    
-	// Do any additional setup after loading the view.
+    return fetchMoments;
 }
 
 - (void)didReceiveMemoryWarning
