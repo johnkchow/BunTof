@@ -7,13 +7,13 @@
 //
 
 #import "BTFeedViewCell.h"
-#import <STTweetLabel/STTweetLabel.h>
+#import <AMAttributedHighlightLabel.h>
 
 @interface BTFeedViewCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *mainImageView;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *locationLabel;
-@property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
+@property (weak, nonatomic) IBOutlet AMAttributedHighlightLabel *descriptionLabel;
 
 @end
 
@@ -37,6 +37,10 @@
 {
     self.backgroundColor = [UIColor colorWithRed:243.0f/255 green:243.0f/255 blue:243.0f/255 alpha:1.0f];
     self.descriptionLabel.textColor = [UIColor colorWithWhite:51.0f/255 alpha:1.0f];
+    self.descriptionLabel.hashtagTextColor = [UIColor blackColor];
+    UIFont* font = self.descriptionLabel.font;
+    UIFont *boldFont = [UIFont boldSystemFontOfSize:font.pointSize];
+    self.descriptionLabel.hashtagFont = boldFont;
 }
 
 - (void) setMoment:(BTCapturedMoment *)moment
@@ -50,8 +54,11 @@
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat: @"MMM d ''YY"];
     self.dateLabel.text = [dateFormatter stringFromDate: self.moment.date];
-    self.locationLabel.text = self.moment.location.name;
-    self.descriptionLabel.text = self.moment.description;
+    if (self.moment.location)
+    {
+        self.locationLabel.text = self.moment.location.name;
+    }
+    [self.descriptionLabel setString:self.moment.description];
     NSURL *baseURL = [NSURL URLWithString:BASE_URL];
     NSURL *imageURL = [NSURL URLWithString:self.moment.imageURL.relativePath relativeToURL:baseURL];
     NSURLRequest *request = [NSMutableURLRequest requestWithURL: imageURL];
