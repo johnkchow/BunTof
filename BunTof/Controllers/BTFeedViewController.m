@@ -49,6 +49,14 @@ static NSString* cellIdentifier = @"FeedViewCell";
     RACSignal *fetchMoments = [[[BTMomentManager sharedManager] fetchAll]
                                deliverOn: [RACScheduler mainThreadScheduler]];
     
+    UITapGestureRecognizer* gesture = [[UITapGestureRecognizer alloc] init];
+    [self.navigationItem.titleView addGestureRecognizer: gesture];
+    self.navigationItem.titleView.userInteractionEnabled = YES;
+    [[gesture rac_gestureSignal] subscribeNext:^(UITapGestureRecognizer* sender) {
+        @strongify(self);
+        [self.tableView setContentOffset:CGPointZero animated:YES];
+    }];
+    
     [fetchMoments subscribeNext:^(NSArray* moments) {
         @strongify(self);
         NSLog(@"Subscribe Next %lu moments: %@", (unsigned long)self.moments.count, self.moments);
