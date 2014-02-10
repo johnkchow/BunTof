@@ -48,10 +48,6 @@ static NSString* cellIdentifier = @"FeedViewCell";
         [self.tableView reloadData];
     }];
     
-    UITapGestureRecognizer* gesture = [[UITapGestureRecognizer alloc] init];
-    [self.navigationItem.titleView addGestureRecognizer: gesture];
-    self.navigationItem.titleView.userInteractionEnabled = YES;
-    
 #ifdef DEBUG
     UIBarButtonItem *reloadButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:nil action:nil];
     reloadButton.tintColor = [UIColor colorWithRed:241.0f/255 green:100.0f/255 blue:73.0f/255 alpha:1.0f];
@@ -60,8 +56,28 @@ static NSString* cellIdentifier = @"FeedViewCell";
         return [self fetchMoments];
     }];
     self.navigationItem.rightBarButtonItem = reloadButton;
+    
+    UITapGestureRecognizer* scrollToBottomGesture = [[UITapGestureRecognizer alloc] init];
+    scrollToBottomGesture.numberOfTapsRequired = 2;
+    
+    CGSize size = self.view.frame.size;
+    NSLog(@"Size of view: %@", NSStringFromCGSize(size));
+    CGRect damageRect = CGRectMake(0.0f, 0.75f * size.height, size.width, 0.25f * size.height);
+    
+    [[[scrollToBottomGesture rac_gestureSignal] filter:^BOOL(UITapGestureRecognizer* gesture) {
+        CGPoint p = [gesture locationInView:self.view];
+        return CGRectContainsPoint(damageRect, p);
+    }] subscribeNext:^(id x) {
+        NSIndexPath* bottomRow = [NSIndexPath indexPathForRow: self.moments.count - 1 inSection:0];
+        [self.tableView scrollToRowAtIndexPath:bottomRow atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    }];
+    [self.view addGestureRecognizer: scrollToBottomGesture];
 #endif
     
+    
+    UITapGestureRecognizer* gesture = [[UITapGestureRecognizer alloc] init];
+    [self.navigationItem.titleView addGestureRecognizer: gesture];
+    self.navigationItem.titleView.userInteractionEnabled = YES;
     [[gesture rac_gestureSignal] subscribeNext:^(UITapGestureRecognizer* sender) {
         
         @strongify(self);
@@ -85,7 +101,7 @@ static NSString* cellIdentifier = @"FeedViewCell";
         NSLog(@"Error fetching: %@", error);
     } completed:^{
         @strongify(self);
-        NSLog(@"Subscribe completion %lu moments: %@", (unsigned long)self.moments.count, self.moments);
+//        NSLog(@"Subscribe completion %lu moments: %@", (unsigned long)self.moments.count, self.moments);
     }];
     
     return fetchMoments;
