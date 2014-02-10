@@ -38,7 +38,7 @@
 
 - (RACSignal*) fetchAll
 {
-    return [[self.httpManager rac_GET:@"/moments.json" parameters:nil] flattenMap:^id(RACTuple *tuple) {
+    return [[[[self.httpManager rac_GET:@"/moments.json" parameters:nil] flattenMap:^id(RACTuple *tuple) {
         NSArray *serializedMoments = tuple[1];
         NSLog(@"Fetch serialized moments complete: %@", serializedMoments);
         return [[serializedMoments.rac_sequence.signal flattenMap:^RACStream *(NSDictionary *serializedMoment) {
@@ -49,6 +49,6 @@
             else
                 return [RACSignal return:moment];
         }] collect];
-    }];
+    }] publish] autoconnect];
 }
 @end
