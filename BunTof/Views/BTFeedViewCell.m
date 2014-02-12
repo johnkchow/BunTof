@@ -58,8 +58,9 @@
     {
         self.locationLabel.text = self.moment.location.name;
     }
-    [self.descriptionLabel setString:self.moment.description];
-    NSURL *baseURL = [NSURL URLWithString:BASE_URL];
+//    [self.descriptionLabel setString:self.moment.description];
+    self.descriptionLabel.text = self.moment.description;
+    NSURL *baseURL = [NSURL URLWithString:IMAGE_BASE_URL];
     NSURL *imageURL = [NSURL URLWithString:self.moment.imageURL.relativePath relativeToURL:baseURL];
     NSURLRequest *request = [NSMutableURLRequest requestWithURL: imageURL];
     typeof(self) __weak _self = self;

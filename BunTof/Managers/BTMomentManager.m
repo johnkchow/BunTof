@@ -30,7 +30,7 @@
 {
     if (self = [super init])
     {
-        NSURL *baseURL = [NSURL URLWithString:BASE_URL];
+        NSURL *baseURL = [NSURL URLWithString:API_BASE_URL];
         self.httpManager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:baseURL];
     }
     return self;
@@ -38,7 +38,7 @@
 
 - (RACSignal*) fetchAll
 {
-    return [[[[self.httpManager rac_GET:@"/moments.json" parameters:nil] flattenMap:^id(RACTuple *tuple) {
+    return [[[[self.httpManager rac_GET:@"moments.json" parameters:nil] flattenMap:^id(RACTuple *tuple) {
         NSArray *serializedMoments = tuple[1];
 //        NSLog(@"Fetch serialized moments complete: %@", serializedMoments);
         return [[serializedMoments.rac_sequence.signal flattenMap:^RACStream *(NSDictionary *serializedMoment) {

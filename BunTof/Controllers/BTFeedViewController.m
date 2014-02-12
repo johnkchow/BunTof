@@ -148,7 +148,7 @@ static NSString* cellIdentifier = @"FeedViewCell";
     [cell.contentView layoutIfNeeded];
     CGFloat height = [cell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
     NSLog(@"Row: %ld, Height: %ld", (long)indexPath.row, (long)height);
-    return height;
+    return height + 1;
 }
 
 @end

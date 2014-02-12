@@ -24,6 +24,12 @@
 	<string>1.0</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Lemon-Regular.ttf</string>
+		<string>Peralta-Regular.ttf</string>
+		<string>BowlbyOne-Regular.ttf</string>
+	</array>
 	<key>UIMainStoryboardFile</key>
 	<string>BunTof</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -33,8 +39,6 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>

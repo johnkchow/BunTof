@@ -10,8 +10,8 @@
 #warning "This project uses features only available in iOS SDK 3.0 and later."
 #endif
 
-#define BASE_URL @"http://localhost:7000/"
-#define BASE_URL @"http://10.0.0.5:7000/"
+#define API_BASE_URL @"https://s3.amazonaws.com/buntof/"
+#define IMAGE_BASE_URL @"https://s3.amazonaws.com/buntof/images/"
 
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>

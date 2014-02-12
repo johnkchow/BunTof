@@ -15,6 +15,10 @@
 		4F5745501898CEA700E35EFE /* BTFeedViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F57454F1898CEA700E35EFE /* BTFeedViewCell.xib */; };
 		4F5745531898CEE200E35EFE /* BTFeedViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5745521898CEE200E35EFE /* BTFeedViewCell.m */; };
 		4F5E8EDD189F71BE00C9B76D /* BTMomentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5E8EDC189F71BE00C9B76D /* BTMomentManager.m */; };
+		4F75267018A9F19900358E2C /* BTLaunchScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F75266F18A9F19900358E2C /* BTLaunchScreenViewController.m */; };
+		4F75267618AA011D00358E2C /* Lemon-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4F75267418AA008900358E2C /* Lemon-Regular.ttf */; };
+		4F75267718AA011D00358E2C /* Peralta-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4F75267518AA008900358E2C /* Peralta-Regular.ttf */; };
+		4F75267A18AA01F000358E2C /* BowlbyOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4F75267918AA018200358E2C /* BowlbyOne-Regular.ttf */; };
 		4F964DAF18980CB800052520 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F964DAE18980CB800052520 /* Foundation.framework */; };
 		4F964DB118980CB800052520 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F964DB018980CB800052520 /* CoreGraphics.framework */; };
 		4F964DB318980CB800052520 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F964DB218980CB800052520 /* UIKit.framework */; };
@@ -55,6 +59,11 @@
 		4F5745521898CEE200E35EFE /* BTFeedViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BTFeedViewCell.m; path = Views/BTFeedViewCell.m; sourceTree = "<group>"; };
 		4F5E8EDB189F71BE00C9B76D /* BTMomentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BTMomentManager.h; path = Managers/BTMomentManager.h; sourceTree = "<group>"; };
 		4F5E8EDC189F71BE00C9B76D /* BTMomentManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BTMomentManager.m; path = Managers/BTMomentManager.m; sourceTree = "<group>"; };
+		4F75266E18A9F19900358E2C /* BTLaunchScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BTLaunchScreenViewController.h; path = Controllers/BTLaunchScreenViewController.h; sourceTree = "<group>"; };
+		4F75266F18A9F19900358E2C /* BTLaunchScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BTLaunchScreenViewController.m; path = Controllers/BTLaunchScreenViewController.m; sourceTree = "<group>"; };
+		4F75267418AA008900358E2C /* Lemon-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Lemon-Regular.ttf"; path = "Resources/Fonts/Lemon-Regular.ttf"; sourceTree = "<group>"; };
+		4F75267518AA008900358E2C /* Peralta-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Peralta-Regular.ttf"; path = "Resources/Fonts/Peralta-Regular.ttf"; sourceTree = "<group>"; };
+		4F75267918AA018200358E2C /* BowlbyOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BowlbyOne-Regular.ttf"; path = "Resources/Fonts/BowlbyOne-Regular.ttf"; sourceTree = "<group>"; };
 		4F964DAB18980CB800052520 /* Bun & Tof.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bun & Tof.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F964DAE18980CB800052520 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4F964DB018980CB800052520 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -116,6 +125,8 @@
 			children = (
 				4F57454B1898CB4900E35EFE /* BTFeedViewController.h */,
 				4F57454C1898CB4900E35EFE /* BTFeedViewController.m */,
+				4F75266E18A9F19900358E2C /* BTLaunchScreenViewController.h */,
+				4F75266F18A9F19900358E2C /* BTLaunchScreenViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -137,6 +148,24 @@
 				4F5E8EDC189F71BE00C9B76D /* BTMomentManager.m */,
 			);
 			name = Managers;
+			sourceTree = "<group>";
+		};
+		4F75267118AA001E00358E2C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4F75267218AA002600358E2C /* Fonts */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		4F75267218AA002600358E2C /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				4F75267418AA008900358E2C /* Lemon-Regular.ttf */,
+				4F75267518AA008900358E2C /* Peralta-Regular.ttf */,
+				4F75267918AA018200358E2C /* BowlbyOne-Regular.ttf */,
+			);
+			name = Fonts;
 			sourceTree = "<group>";
 		};
 		4F964DA218980CB700052520 = {
@@ -183,6 +212,7 @@
 				4F964DBD18980CB800052520 /* BTAppDelegate.h */,
 				4F964DBE18980CB800052520 /* BTAppDelegate.m */,
 				4F964DC018980CB800052520 /* Images.xcassets */,
+				4F75267118AA001E00358E2C /* Resources */,
 				4F964DB518980CB800052520 /* Supporting Files */,
 			);
 			path = BunTof;
@@ -295,6 +325,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F75267A18AA01F000358E2C /* BowlbyOne-Regular.ttf in Resources */,
+				4F75267618AA011D00358E2C /* Lemon-Regular.ttf in Resources */,
+				4F75267718AA011D00358E2C /* Peralta-Regular.ttf in Resources */,
 				4F5745501898CEA700E35EFE /* BTFeedViewCell.xib in Resources */,
 				4F964DB918980CB800052520 /* InfoPlist.strings in Resources */,
 				4F964DC118980CB800052520 /* Images.xcassets in Resources */,
@@ -351,6 +384,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F964DBF18980CB800052520 /* BTAppDelegate.m in Sources */,
+				4F75267018A9F19900358E2C /* BTLaunchScreenViewController.m in Sources */,
 				4F964DBB18980CB800052520 /* main.m in Sources */,
 				4F5745531898CEE200E35EFE /* BTFeedViewCell.m in Sources */,
 				4F57454D1898CB4900E35EFE /* BTFeedViewController.m in Sources */,
