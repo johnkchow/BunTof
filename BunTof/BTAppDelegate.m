@@ -24,7 +24,7 @@
     
     UIColor* color = [[UIColor alloc] initWithRed:248.0f/255.0f green:167.0f/255.0f blue:186.0f/255.0f alpha:1.0f];
     [UINavigationBar appearance].barTintColor = color;
-    self.window.tintColor = color;
+    self.window.tintColor = [UIColor colorWithRed:241.0f/255 green:100.0f/255 blue:73.0f/255 alpha:1.0f];
     return YES;
 }
 

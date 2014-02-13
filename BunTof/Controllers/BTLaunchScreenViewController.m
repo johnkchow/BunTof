@@ -18,6 +18,7 @@
     UIDynamicAnimator *animator;
     UICollisionBehavior *collisionBehavior;
     UIGravityBehavior *gravityBehavior;
+    AVAudioPlayer *audioPlayer;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -29,25 +30,24 @@
     return self;
 }
 
+#pragma mark - UIViewController lifecycle
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     CGRect frame = CGRectMake(0.0f, 0.0f, self.view.frame.size.width, CGFLOAT_MAX);
     self.titleLabel = [[UILabel alloc] initWithFrame:frame];
+    self.titleLabel.text = @"Bun + Tof";
+    self.titleLabel.textColor = [UIColor whiteColor];
     self.titleLabel.font = [UIFont fontWithName:@"Peralta" size: 50.0f];
     self.continueButton.alpha = 0;
-    self.continueButton.tintColor = [UIColor colorWithRed:241.0f/255 green:100.0f/255 blue:73.0f/255 alpha:1.0f];
-    [self setupInitialTitleLabel];
+    [self setupInitialTitleLabelFrame];
     [self.view addSubview:self.titleLabel];
-    self.continueButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
-        [self performSegueWithIdentifier:@"Continue" sender:self];
-        return [RACSignal empty];
-    }];
+    self.title = @"";
     
 #ifdef DEBUG
     UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] init];
     [[gesture rac_gestureSignal] subscribeNext:^(id x) {
-        [self setupInitialTitleLabel];
+        [self setupInitialTitleLabelFrame];
         [self setupAnimator];
     }];
     [self.view addGestureRecognizer:gesture];
@@ -57,15 +57,35 @@
 -(void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = YES;
     [self performSelector:@selector(setupAnimator) withObject:nil afterDelay:1.0f];
+    NSError* error;
+    NSURL* fileURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"everything_is_awesome" ofType:@"m4a"]];
+    audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:&error];
+    [audioPlayer prepareToPlay];
+    if ([[AVAudioSession sharedInstance] outputVolume] > 0.75)
+    {
+        audioPlayer.volume = 0.5;
+    }
+    [self performSelector:@selector(fadeVolumeDown) withObject:nil afterDelay:11];
 }
 
--(void) setupInitialTitleLabel
+- (void)viewWillDisappear:(BOOL)animated
 {
-    
+    self.navigationController.navigationBarHidden = NO;
+}
+
+-(void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [audioPlayer play];
+}
+
+#pragma mark - Helper methods
+
+-(void) setupInitialTitleLabelFrame
+{
     CGRect frame = CGRectMake(0.0f, 0.0f, self.view.frame.size.width, CGFLOAT_MAX);
-    self.titleLabel.text = @"Bun + Tof";
-    self.titleLabel.textColor = [UIColor whiteColor];
     [self.titleLabel sizeToFit];
     CGSize size = self.titleLabel.frame.size;
     frame.origin.x = ceil(self.view.frame.size.width/2 - self.titleLabel.frame.size.width/2);
@@ -73,6 +93,14 @@
     frame.size = size;
     NSLog(@"Frame: %@", NSStringFromCGRect(frame));
     self.titleLabel.frame = frame;
+}
+
+- (void) fadeVolumeDown
+{
+    if (audioPlayer.volume > 0.1) {
+        audioPlayer.volume = audioPlayer.volume - 0.05;
+        [self performSelector:@selector(fadeVolumeDown) withObject:nil afterDelay:0.1];
+    }
 }
 
 - (void)setupAnimator
@@ -87,12 +115,6 @@
     
     gravityBehavior = [[UIGravityBehavior alloc] initWithItems:@[self.titleLabel]];
     [animator addBehavior:gravityBehavior];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - UIDynamicAnimatorDelegate

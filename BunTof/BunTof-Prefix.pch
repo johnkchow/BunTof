@@ -22,4 +22,6 @@
     #import <CoreLocation/CLLocation.h>
     #import <ReactiveCocoa/ReactiveCocoa.h>
     #import <AFNetworking-RACExtensions/RACAFNetworking.h>
+    #import <AVFoundation/AVFoundation.h>
+    #import <ReactiveCocoa/RACEXTScope.h>
 #endif

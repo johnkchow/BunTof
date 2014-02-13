@@ -10,7 +10,6 @@
 #import "BTCapturedMoment.h"
 #import "BTFeedViewCell.h"
 #import "BTMomentManager.h"
-#import <ReactiveCocoa/RACEXTScope.h>
 
 @interface BTFeedViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -48,9 +47,9 @@ static NSString* cellIdentifier = @"FeedViewCell";
         [self.tableView reloadData];
     }];
     
+    
 #ifdef DEBUG
     UIBarButtonItem *reloadButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:nil action:nil];
-    reloadButton.tintColor = [UIColor colorWithRed:241.0f/255 green:100.0f/255 blue:73.0f/255 alpha:1.0f];
     reloadButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
         @strongify(self);
         return [self fetchMoments];
