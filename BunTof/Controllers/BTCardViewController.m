@@ -30,6 +30,8 @@
     self.textView.textContainerInset = UIEdgeInsetsMake(20, 20, 20, 20);
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Nav Bar"]];
     self.navigationController.navigationBar.translucent = NO;
+    self.view.backgroundColor = [UIColor colorWithRed:243.0f/255 green:243.0f/255 blue:243.0f/255 alpha:1.0f];
+    self.textView.backgroundColor = [UIColor colorWithRed:243.0f/255 green:243.0f/255 blue:243.0f/255 alpha:1.0f];
     self.title = @"";
 
     self.edgesForExtendedLayout = UIRectEdgeNone;
