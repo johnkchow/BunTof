@@ -12,6 +12,7 @@
 #import "BTMomentManager.h"
 
 @interface BTFeedViewController () <UITableViewDataSource, UITableViewDelegate>
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicatorView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
@@ -36,6 +37,8 @@ static NSString* cellIdentifier = @"FeedViewCell";
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.backgroundColor = [UIColor colorWithRed:243.0f/255 green:243.0f/255 blue:243.0f/255 alpha:1.0f];
+    self.tableView.separatorColor = [UIColor clearColor];
+    [self.activityIndicatorView startAnimating];
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Nav Bar"]];
     self.navigationController.navigationBar.translucent = NO;
     self.edgesForExtendedLayout = UIRectEdgeNone;
@@ -47,6 +50,16 @@ static NSString* cellIdentifier = @"FeedViewCell";
         [self.tableView reloadData];
     }];
     
+    UITapGestureRecognizer* gesture = [[UITapGestureRecognizer alloc] init];
+    [self.navigationItem.titleView addGestureRecognizer: gesture];
+    self.navigationItem.titleView.userInteractionEnabled = YES;
+    [[gesture rac_gestureSignal] subscribeNext:^(UITapGestureRecognizer* sender) {
+        
+        @strongify(self);
+        [self.tableView setContentOffset:CGPointZero animated:YES];
+    }];
+    
+    [self fetchMoments];
     
 #ifdef DEBUG
     UIBarButtonItem *reloadButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:nil action:nil];
@@ -72,18 +85,6 @@ static NSString* cellIdentifier = @"FeedViewCell";
     }];
     [self.view addGestureRecognizer: scrollToBottomGesture];
 #endif
-    
-    
-    UITapGestureRecognizer* gesture = [[UITapGestureRecognizer alloc] init];
-    [self.navigationItem.titleView addGestureRecognizer: gesture];
-    self.navigationItem.titleView.userInteractionEnabled = YES;
-    [[gesture rac_gestureSignal] subscribeNext:^(UITapGestureRecognizer* sender) {
-        
-        @strongify(self);
-        [self.tableView setContentOffset:CGPointZero animated:YES];
-    }];
-    
-    [self fetchMoments];
 }
 
 - (RACSignal*) fetchMoments
@@ -91,6 +92,7 @@ static NSString* cellIdentifier = @"FeedViewCell";
     RACSignal *fetchMoments = [[[BTMomentManager sharedManager] fetchAll]
                                deliverOn: [RACScheduler mainThreadScheduler]];
     
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     @weakify(self);
     [fetchMoments subscribeNext:^(NSArray* moments) {
         @strongify(self);
@@ -100,7 +102,11 @@ static NSString* cellIdentifier = @"FeedViewCell";
         NSLog(@"Error fetching: %@", error);
     } completed:^{
         @strongify(self);
-//        NSLog(@"Subscribe completion %lu moments: %@", (unsigned long)self.moments.count, self.moments);
+        [self.activityIndicatorView stopAnimating];
+        [UIView animateWithDuration:0.5f animations:^{
+            self.activityIndicatorView.alpha = 0;
+        }];
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     }];
     
     return fetchMoments;
