@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="234" id="zYE-la-hvh" customClass="BTLastItemViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="234"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zYE-la-hvh" id="b5q-Ip-oNr">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="233"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Placeholder note" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="Cd1-n9-wsn" customClass="AMAttributedHighlightLabel">
+                        <rect key="frame" x="10" y="20" width="300" height="193"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Cd1-n9-wsn" firstAttribute="top" secondItem="b5q-Ip-oNr" secondAttribute="top" constant="20" id="0lp-qu-s3K"/>
+                    <constraint firstAttribute="bottom" secondItem="Cd1-n9-wsn" secondAttribute="bottom" constant="20" id="4oe-cw-bWQ"/>
+                    <constraint firstItem="Cd1-n9-wsn" firstAttribute="leading" secondItem="b5q-Ip-oNr" secondAttribute="leading" constant="10" id="bYd-Zi-w3V"/>
+                    <constraint firstAttribute="trailing" secondItem="Cd1-n9-wsn" secondAttribute="trailing" constant="10" id="gHC-Xj-aMY"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="noteLabel" destination="Cd1-n9-wsn" id="IAm-lX-pkp"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

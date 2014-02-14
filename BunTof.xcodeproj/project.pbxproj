@@ -19,6 +19,8 @@
 		4F75267618AA011D00358E2C /* Lemon-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4F75267418AA008900358E2C /* Lemon-Regular.ttf */; };
 		4F75267718AA011D00358E2C /* Peralta-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4F75267518AA008900358E2C /* Peralta-Regular.ttf */; };
 		4F75267A18AA01F000358E2C /* BowlbyOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4F75267918AA018200358E2C /* BowlbyOne-Regular.ttf */; };
+		4F8C576D18ADDC2500352DE8 /* BTLastItemViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F8C576C18ADDC2500352DE8 /* BTLastItemViewCell.xib */; };
+		4F8C577018ADDE9200352DE8 /* BTLastItemViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8C576F18ADDE9200352DE8 /* BTLastItemViewCell.m */; };
 		4F964DAF18980CB800052520 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F964DAE18980CB800052520 /* Foundation.framework */; };
 		4F964DB118980CB800052520 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F964DB018980CB800052520 /* CoreGraphics.framework */; };
 		4F964DB318980CB800052520 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F964DB218980CB800052520 /* UIKit.framework */; };
@@ -67,6 +69,9 @@
 		4F75267418AA008900358E2C /* Lemon-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Lemon-Regular.ttf"; path = "Resources/Fonts/Lemon-Regular.ttf"; sourceTree = "<group>"; };
 		4F75267518AA008900358E2C /* Peralta-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Peralta-Regular.ttf"; path = "Resources/Fonts/Peralta-Regular.ttf"; sourceTree = "<group>"; };
 		4F75267918AA018200358E2C /* BowlbyOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BowlbyOne-Regular.ttf"; path = "Resources/Fonts/BowlbyOne-Regular.ttf"; sourceTree = "<group>"; };
+		4F8C576C18ADDC2500352DE8 /* BTLastItemViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BTLastItemViewCell.xib; path = Views/BTLastItemViewCell.xib; sourceTree = "<group>"; };
+		4F8C576E18ADDE9200352DE8 /* BTLastItemViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BTLastItemViewCell.h; path = Views/BTLastItemViewCell.h; sourceTree = "<group>"; };
+		4F8C576F18ADDE9200352DE8 /* BTLastItemViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BTLastItemViewCell.m; path = Views/BTLastItemViewCell.m; sourceTree = "<group>"; };
 		4F964DAB18980CB800052520 /* Bun & Tof.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bun & Tof.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F964DAE18980CB800052520 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4F964DB018980CB800052520 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -148,6 +153,9 @@
 				4F57454F1898CEA700E35EFE /* BTFeedViewCell.xib */,
 				4F5745511898CEE200E35EFE /* BTFeedViewCell.h */,
 				4F5745521898CEE200E35EFE /* BTFeedViewCell.m */,
+				4F8C576C18ADDC2500352DE8 /* BTLastItemViewCell.xib */,
+				4F8C576E18ADDE9200352DE8 /* BTLastItemViewCell.h */,
+				4F8C576F18ADDE9200352DE8 /* BTLastItemViewCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -355,6 +363,7 @@
 				4F964DB918980CB800052520 /* InfoPlist.strings in Resources */,
 				4F964DC118980CB800052520 /* Images.xcassets in Resources */,
 				4F5745491898CA5F00E35EFE /* BunTof.storyboard in Resources */,
+				4F8C576D18ADDC2500352DE8 /* BTLastItemViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,6 +424,7 @@
 				4F5745471898C50400E35EFE /* BTLocation.m in Sources */,
 				4F5E8EDD189F71BE00C9B76D /* BTMomentManager.m in Sources */,
 				4F5745421898C18100E35EFE /* BTCapturedMoment.m in Sources */,
+				4F8C577018ADDE9200352DE8 /* BTLastItemViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

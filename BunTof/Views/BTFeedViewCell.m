@@ -18,6 +18,9 @@
 @end
 
 @implementation BTFeedViewCell
+{
+    BOOL _loadedConstraints;
+}
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -72,6 +75,20 @@
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
         NSLog(@"%@", error);
     }];
+}
+
+-(void)updateConstraints
+{
+    [super updateConstraints];
+    
+    if (_loadedConstraints)
+        return;
+    
+    UILabel *dateLabel = self.dateLabel;
+    UILabel *locationLabel = self.locationLabel;
+    NSDictionary *viewDictionary = NSDictionaryOfVariableBindings(dateLabel, locationLabel);
+    NSArray *constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"[dateLabel]-(>=10)-[locationLabel]" options:0 metrics:nil views:viewDictionary];
+    [self addConstraints:constraints];
 }
 
 -(void) layoutSubviews

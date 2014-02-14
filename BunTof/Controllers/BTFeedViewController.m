@@ -9,6 +9,7 @@
 #import "BTFeedViewController.h"
 #import "BTCapturedMoment.h"
 #import "BTFeedViewCell.h"
+#import "BTLastItemViewCell.h"
 #import "BTMomentManager.h"
 
 @interface BTFeedViewController () <UITableViewDataSource, UITableViewDelegate>
@@ -20,6 +21,7 @@
 @implementation BTFeedViewController
 
 static NSString* cellIdentifier = @"FeedViewCell";
+static NSString* lastItemCellIdentifier = @"LastItemViewCell";
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -34,6 +36,7 @@ static NSString* cellIdentifier = @"FeedViewCell";
 {
     [super viewDidLoad];
     [self.tableView registerNib:[UINib nibWithNibName:@"BTFeedViewCell" bundle:nil] forCellReuseIdentifier: cellIdentifier];
+    [self.tableView registerNib:[UINib nibWithNibName:@"BTLastItemViewCell" bundle:nil] forCellReuseIdentifier: lastItemCellIdentifier];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.backgroundColor = [UIColor colorWithRed:243.0f/255 green:243.0f/255 blue:243.0f/255 alpha:1.0f];
@@ -122,7 +125,10 @@ static NSString* cellIdentifier = @"FeedViewCell";
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.moments.count;
+    if (self.moments.count == 0)
+        return 0;
+    else
+        return self.moments.count + 1;
 }
 
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
@@ -134,21 +140,39 @@ static NSString* cellIdentifier = @"FeedViewCell";
 
 - (CGFloat) tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 400.0f;
+    return 420.0f;
 }
 
 - (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    BTFeedViewCell *cell = [tableView dequeueReusableCellWithIdentifier: cellIdentifier];
-    cell.moment = self.moments[indexPath.row];
-    return cell;
+    if (indexPath.row == self.moments.count)
+    {
+        BTLastItemViewCell *cell = [tableView dequeueReusableCellWithIdentifier:lastItemCellIdentifier];
+        return cell;
+    }
+    else
+    {
+        
+        BTFeedViewCell *cell = [tableView dequeueReusableCellWithIdentifier: cellIdentifier];
+        cell.moment = self.moments[indexPath.row];
+        return cell;
+    }
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    BTFeedViewCell *cell = [tableView dequeueReusableCellWithIdentifier: cellIdentifier];
+    UITableViewCell *cell;
+    if (indexPath.row == self.moments.count)
+    {
+        cell = [tableView dequeueReusableCellWithIdentifier: lastItemCellIdentifier];
+    }
+    else
+    {
+        BTFeedViewCell *feedCell = [tableView dequeueReusableCellWithIdentifier: cellIdentifier];
+        feedCell.moment = self.moments[indexPath.row];
+        cell = feedCell;
+    }
 
-    cell.moment = self.moments[indexPath.row];
     [cell.contentView setNeedsLayout];
     [cell.contentView layoutIfNeeded];
     CGFloat height = [cell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
