@@ -12,7 +12,7 @@
 @interface BTCapturedMoment : MTLModel <MTLJSONSerializing>
 
 @property (nonatomic, strong) NSURL *imageURL;
-@property (nonatomic, strong) NSString *description;
+@property (nonatomic, strong) NSString *momentDescription;
 @property (nonatomic, strong) BTLocation *location;
 @property (nonatomic, strong) NSDate *date;
 @end

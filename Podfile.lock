@@ -2,12 +2,12 @@ PODS:
   - AFNetworkActivityLogger (2.0.1):
     - AFNetworking (~> 2.0)
   - AFNetworking (2.1.0):
-    - AFNetworking/NSURLConnection
-    - AFNetworking/NSURLSession
-    - AFNetworking/Reachability
-    - AFNetworking/Security
-    - AFNetworking/Serialization
-    - AFNetworking/UIKit
+    - AFNetworking/NSURLConnection (= 2.1.0)
+    - AFNetworking/NSURLSession (= 2.1.0)
+    - AFNetworking/Reachability (= 2.1.0)
+    - AFNetworking/Security (= 2.1.0)
+    - AFNetworking/Serialization (= 2.1.0)
+    - AFNetworking/UIKit (= 2.1.0)
   - AFNetworking-RACExtensions (0.1.3):
     - AFNetworking (~> 2.0)
     - ReactiveCocoa (~> 2.0)
@@ -23,13 +23,15 @@ PODS:
   - AFNetworking/UIKit (2.1.0):
     - AFNetworking/NSURLConnection
   - AMAttributedHighlightLabel (0.0.1)
-  - Facebook-iOS-SDK (3.11.1)
+  - Bolts (1.1.3)
+  - Facebook-iOS-SDK (3.17.0):
+    - Bolts
   - Mantle (1.3.1):
-    - Mantle/extobjc
+    - Mantle/extobjc (= 1.3.1)
   - Mantle/extobjc (1.3.1)
   - ReactiveCocoa (2.2.3):
-    - ReactiveCocoa/Core
-    - ReactiveCocoa/no-arc
+    - ReactiveCocoa/Core (= 2.2.3)
+    - ReactiveCocoa/no-arc (= 2.2.3)
   - ReactiveCocoa/Core (2.2.3):
     - ReactiveCocoa/no-arc
   - ReactiveCocoa/no-arc (2.2.3)
@@ -39,7 +41,7 @@ DEPENDENCIES:
   - AFNetworking (~> 2.1.0)
   - AFNetworking-RACExtensions (from `https://github.com/knshiro/AFNetworking-RACExtensions.git`)
   - AMAttributedHighlightLabel (from `https://github.com/johnkchow/AMAttributedHighlightLabel.git`)
-  - Facebook-iOS-SDK (~> 3.11.1)
+  - Facebook-iOS-SDK (~> 3.17.0)
   - Mantle (~> 1.3.1)
   - ReactiveCocoa
 
@@ -49,13 +51,22 @@ EXTERNAL SOURCES:
   AMAttributedHighlightLabel:
     :git: https://github.com/johnkchow/AMAttributedHighlightLabel.git
 
+CHECKOUT OPTIONS:
+  AFNetworking-RACExtensions:
+    :commit: d4c6097d3f22be212c66339f850b1be180162747
+    :git: https://github.com/knshiro/AFNetworking-RACExtensions.git
+  AMAttributedHighlightLabel:
+    :commit: 4add1645684027d6ca1c55c1c32a2a065b351e71
+    :git: https://github.com/johnkchow/AMAttributedHighlightLabel.git
+
 SPEC CHECKSUMS:
-  AFNetworkActivityLogger: c2e99aec5d965a3ee33f0954a20c5ddab18934fe
-  AFNetworking: c7d7901a83f631414c7eda1737261f696101a5cd
+  AFNetworkActivityLogger: 01dde83938bf509742ad4c21f25d43a0fa019dd6
+  AFNetworking: 7c33510b46f994bc75b75c6e63c1d83414ca40f2
   AFNetworking-RACExtensions: 4f7633edc5618e771f1c034ec3eb6974fe9eb441
   AMAttributedHighlightLabel: edb4ed99051ff55cd796ec6b712c30d11a949eb0
-  Facebook-iOS-SDK: 42a1de39170b858d675c2453d8aace55c51be2bb
-  Mantle: abc3b0c81bc66eb624cf9cebb8640e377d5a44ae
-  ReactiveCocoa: b3cb6ebd50f1a0f2e39c6fd7ce3c428b6efcb22b
+  Bolts: 3db0a875235e0c9042b013af13af0f00f79b102c
+  Facebook-iOS-SDK: f20274d809f112ba540842e2b6cbe50128d51b7b
+  Mantle: a59fdca5cfedd43a0707f0418b3df4b043a1425d
+  ReactiveCocoa: b751b6d1df73688da1040a3cd5b068765ec118d4
 
-COCOAPODS: 0.29.0
+COCOAPODS: 0.35.0

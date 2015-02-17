@@ -21,7 +21,7 @@
 {
     return @{
              @"imageURL": @"image_url",
-             @"description": @"description",
+             @"momentDescription": @"description",
              @"location": @"location",
              @"date": @"date"
              };
