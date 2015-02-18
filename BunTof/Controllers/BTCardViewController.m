@@ -10,6 +10,7 @@
 
 @interface BTCardViewController ()
 @property (weak, nonatomic) IBOutlet UITextView *textView;
+@property (weak, nonatomic) IBOutlet UITextView *messageView;
 
 @end
 
@@ -33,6 +34,7 @@
     self.view.backgroundColor = [UIColor colorWithRed:243.0f/255 green:243.0f/255 blue:243.0f/255 alpha:1.0f];
     self.textView.backgroundColor = [UIColor colorWithRed:243.0f/255 green:243.0f/255 blue:243.0f/255 alpha:1.0f];
     self.title = @"";
+    self.messageView.text = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"MESSAGE"];
 
     self.edgesForExtendedLayout = UIRectEdgeNone;
 

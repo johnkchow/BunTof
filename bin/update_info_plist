@@ -1,0 +1,91 @@
+#!/usr/bin/env ruby
+
+require 'yaml'
+require 'open3'
+
+unless File.exists?('app_settings.yml')
+  raise "Local settings not found!"
+end
+
+configuration = ENV["CONFIGURATION"]
+
+app_settings = YAML.load_file('app_settings.yml')[configuration]
+
+if File.exists?('local_settings.yml')
+  local_settings = YAML.load_file('local_settings.yml')[configuration] || {}
+else
+  local_settings = {}
+end
+
+def set_key_value(key, value)
+  puts "set_key_value: (#{key}, #{value})"
+  exec_command add_command(key, value)
+  case value
+  when String, TrueClass, FalseClass, Float, Fixnum
+    output, status = exec_command set_command(key, value)
+    if status != 0
+      if output.include?("Does Not Exist")
+        puts "Key #{key} doesn't exists"
+        puts "error code: #{$?}"
+        puts "OUTPUT: #{output}"
+        raise output
+      end
+    end
+  when Array
+    value.each_with_index do |v, i|
+      set_key_value("#{key}:#{i}", v)
+    end
+  when Hash
+    value.each do |k, v|
+      set_key_value("#{key}:#{k}", v)
+    end
+  end
+end
+
+def set_command(key, value)
+  "/usr/libexec/PlistBuddy -c \"SET :#{key} '#{value}'\" \"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\""
+end
+
+def add_command(key, value)
+  type = case value
+         when String
+           'string'
+         when TrueClass, FalseClass
+           'bool'
+         when Fixnum
+           'integer'
+         when Float
+           'real'
+         when Array
+           'array'
+         when Hash
+           'dict'
+         else
+           raise ArgumentError, "Unknown value type (key: '#{key}', value: '#{value}', value_class: #{value.class.name})"
+         end
+
+  value = case value
+          when String, TrueClass, FalseClass, Fixnum, Float
+            value.to_s
+          else
+            nil
+          end
+
+  "/usr/libexec/PlistBuddy -c \"Add :#{key} #{type} #{value ? "'#{value}'" : ""}\" \"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\""
+end
+
+def exec_command(command)
+  puts "Executing command: $ #{command}"
+  stdout, stderr, status = Open3.capture3(command)
+  output = if status == 0
+    stdout || ""
+  else
+    stderr || ""
+  end
+  [output, status]
+end
+puts "PLIST PATH: #{ENV["TARGET_BUILD_DIR"]}/#{ENV["INFOPLIST_PATH"]}"
+
+app_settings.merge(local_settings).each do |key, value|
+  set_key_value(key, value)
+end

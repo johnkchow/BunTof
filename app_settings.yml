@@ -1,0 +1,12 @@
+---
+common: &common
+  MESSAGE: "The real Valentines message is hidden in a local_settings file :)"
+
+Debug:
+  <<: *common
+
+Staging:
+  <<: *common
+
+Release:
+  <<: *common
