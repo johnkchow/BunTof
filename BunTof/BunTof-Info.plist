@@ -32,6 +32,10 @@
 	</array>
 	<key>UIMainStoryboardFile</key>
 	<string>BunTof</string>
+	<key>API_BASE_URL</key>
+	<string></string>
+	<key>IMAGE_BASE_URL</key>
+	<string></string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

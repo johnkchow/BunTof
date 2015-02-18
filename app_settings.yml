@@ -1,6 +1,8 @@
 ---
 common: &common
   MESSAGE: "The real Valentines message is hidden in a local_settings file :)"
+  API_BASE_URL: https://s3.amazonaws.com/buntof/
+  IMAGE_BASE_URL: https://s3.amazonaws.com/buntof/images/
 
 Debug:
   <<: *common

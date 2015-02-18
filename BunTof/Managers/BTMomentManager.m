@@ -30,7 +30,8 @@
 {
     if (self = [super init])
     {
-        NSURL *baseURL = [NSURL URLWithString:API_BASE_URL];
+        NSString *apiBaseURL = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"API_BASE_URL"];
+        NSURL *baseURL = [NSURL URLWithString:apiBaseURL];
         self.httpManager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:baseURL];
     }
     return self;
